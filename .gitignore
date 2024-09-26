@@ -1,0 +1,90 @@
+# Arquivos e diretórios específicos do Laravel
+/vendor/
+/node_modules/
+/public/hot
+/public/storage
+/storage/*.key
+/bootstrap/compiled.php
+/composer.lock
+/storage/*
+
+# Ignore all tenant folders
+/public/storage/tenant*/
+
+# Arquivos de ambiente
+.env
+.env.backup
+.env.*.php
+deploy.sh
+
+# Arquivos de cache e log
+.DS_Store
+.phpunit.result.cache
+npm-debug.log
+yarn-error.log
+
+# Configurações específicas do PHPStorm
+.idea/
+workspace.xml
+
+# Arquivos de configuração do servidor
+Homestead.json
+Homestead.yaml
+
+# Arquivos temporários e de backup
+*.bak
+*.orig
+
+# Arquivos de log e banco de dados
+*.log
+*.sql
+*.sqlite
+
+# Arquivos compilados e de sistema
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Arquivos empacotados
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Arquivos gerados pelo sistema operacional
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Arquivos do editor de código
+*.sublime-project
+*.sublime-workspace
+*.komodoproject
+.vscode/
+
+# Arquivos de configuração do Eclipse
+.buildpath
+.project
+.settings/
+
+# Arquivos de cache
+.cache/
+
+# Arquivos de configuração do servidor Vagrant
+/.vagrant/
+
+# Arquivos específicos do Laravel
+/public/.htaccess
+
+# Arquivo de cache dos pipelines
+.php_cs.cache
+.php-cs-fixer.cache

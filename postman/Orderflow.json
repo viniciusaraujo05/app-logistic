@@ -1,0 +1,1752 @@
+{
+	"info": {
+		"_postman_id": "effa1ce7-5d34-48a8-b4bb-67e678af8d59",
+		"name": "Orderflow",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31965364"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "CheckId",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": 6\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "default"
+							},
+							{
+								"key": "X-Tenant",
+								"value": "{{customer_id}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/auth/delete/2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"delete",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Tenant",
+								"value": "{{customer_id}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"teste@teste.com\",\n    \"password\": \"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "default"
+							},
+							{
+								"key": "X-Tenant",
+								"value": "{{customer_id}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/auth/logout",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registro",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "default"
+							},
+							{
+								"key": "X-Tenant",
+								"value": "{{customer_id}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Celio\",\n  \"email\": \"vinicius1@gmail.com\",\n  \"password\": \"123\" \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "KK integrations",
+			"item": [
+				{
+					"name": "SyncOrders",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "beare {{token}}",
+								"type": "default"
+							},
+							{
+								"key": "X-tenant",
+								"value": "{{customer_id}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/kuanto-kusta/sync",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"kuanto-kusta",
+								"sync"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Carrires",
+			"item": [
+				{
+					"name": "Correos",
+					"item": [
+						{
+							"name": "Label",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "default"
+									},
+									{
+										"key": "X-Tenant",
+										"value": "{{customer_id}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"label_type\": \"PDF\",\n    \"order_code\": \"12384\",\n    \"collection_date\": \"01-06-2024\",\n    \"service_type_id\": 93,\n    \"number_of_volumes\": 6,\n    \"total_weight_of_volumes\": 1000,\n    \"amount\": 0,\n    \"name\": \"name\",\n    \"contact_name\": \"name\",\n    \"street_1\": \"asd\",\n    \"postal_code\": \"3080-331\",\n    \"city\": \"string\",\n    \"country\": \"asd\",\n    \"email\": \"aofksa@ofjaofjas\",\n    \"telephone\": \"1251245135\",\n    \"info_adicional\": \"afsafsa\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/shipping/correos/label",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"shipping",
+										"correos",
+										"label"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "PDF",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "default"
+									},
+									{
+										"key": "X-Tenant",
+										"value": "{{customer_id}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"order_code\": \"12384\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/shipping/correos/pdf",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"shipping",
+										"correos",
+										"pdf"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "SelfShipping",
+					"item": [
+						{
+							"name": "Label",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "default"
+									},
+									{
+										"key": "X-Tenant",
+										"value": "{{customer_id}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"label_type\": \"PDF\",\n    \"order_code\": \"11232384\",\n    \"car\": \"Carro2\",\n    \"number_of_volumes\": 1,\n    \"total_weight_of_volumes\": 100,\n    \"name\": \"name\",\n    \"contact_name\": \"name\",\n    \"street_1\": \"asd\",\n    \"postal_code\": \"3080-331\",\n    \"city\": \"string\",\n    \"country\": \"asd\",\n    \"email\": \"aofksa@ofjaofjas\",\n    \"telephone\": \"1251245135\",\n    \"info_adicional\": \"afsafsa\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/shipping/selfshipping/label",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"shipping",
+										"selfshipping",
+										"label"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "PDF-SELF",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "default"
+									},
+									{
+										"key": "X-Tenant",
+										"value": "{{customer_id}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"order_code\": \"12384\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/shipping/correos/pdf",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"shipping",
+										"correos",
+										"pdf"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Volumes",
+					"item": [
+						{
+							"name": "Get Volumes",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "default"
+									},
+									{
+										"key": "X-Tenant",
+										"value": "{{customer_id}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/carriers/volumes/12384",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"carriers",
+										"volumes",
+										"12384"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Tracking",
+					"item": [
+						{
+							"name": "Get Volumes",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "default"
+									},
+									{
+										"key": "X-Tenant",
+										"value": "{{customer_id}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/shipping/tracking/12384",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"shipping",
+										"tracking",
+										"12384"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Vasp",
+					"item": [
+						{
+							"name": "Download Label",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "default"
+									},
+									{
+										"key": "X-Tenant",
+										"value": "{{customer_id}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"order_code\": \"1244384\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/shipping/vasp/pdf",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"shipping",
+										"vasp",
+										"pdf"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Label",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "default"
+									},
+									{
+										"key": "X-Tenant",
+										"value": "{{customer_id}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"label_type\": \"PDF\",\n    \"order_code\": \"1244384\",\n    \"collection_date\": \"01-01-2024\",\n    \"service_type_id\": 93,\n    \"number_of_volumes\": 2,\n    \"total_weight_of_volumes\": 100,\n    \"amount\": 100,\n    \"name\": \"name\",\n    \"contact_name\": \"name\",\n    \"street_1\": \"asd\",\n    \"postal_code\": \"3080-331\",\n    \"city\": \"string\",\n    \"country\": \"asd\",\n    \"email\": \"aofksa@ofjaofjas\",\n    \"telephone\": \"1251245135\",\n    \"info_adicional\": \"afsafsa\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/shipping/vasp/label",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"shipping",
+										"vasp",
+										"label"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Service Types",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "default"
+									},
+									{
+										"key": "X-Tenant",
+										"value": "{{customer_id}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"postal_code\": \"3080-331\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/shipping/vasp/service-types",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"shipping",
+										"vasp",
+										"service-types"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/customer/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"customer",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/customer/create",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"customer",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"company_name\": \"crazy4pets\",\n  \"responsible_name\": \"crazy4pets\",\n  \"nif\": 154,\n  \"email\": \"crazy4pes@gilbert.com\",\n  \"phone\": 12123\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/customer/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"customer",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getALL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/customer/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"customer",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/customer/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"customer",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Magento Integration",
+			"item": [
+				{
+					"name": "SyncOrders",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "beare {{token}}",
+								"type": "default"
+							},
+							{
+								"key": "X-tenant",
+								"value": "{{customer_id}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/magento/sync",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"magento",
+								"sync"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Worten integrations",
+			"item": [
+				{
+					"name": "SyncOrders",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "beare {{token}}",
+								"type": "default"
+							},
+							{
+								"key": "X-tenant",
+								"value": "{{customer_id}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/kuanto-kusta/sync",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"kuanto-kusta",
+								"sync"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Tenant",
+								"value": "{{customer_id}}",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/order/create",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"order",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "X-tenant",
+								"value": "{{customer_id}}",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"payment_approved\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/order/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"order",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getALL",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-tenant",
+								"value": "{{customer_id}}",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/order/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"order",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-tenant",
+								"value": "{{customer_id}}",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/token/7",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"token",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PDF",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-tenant",
+								"value": "{{customer_id}}",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"order_id\": 265\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/order/pdf",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"order",
+								"pdf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-tenant",
+								"value": "{{customer_id}}",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/order/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"order",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Woo Integration",
+			"item": [
+				{
+					"name": "SyncOrders",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "beare {{token}}",
+								"type": "default"
+							},
+							{
+								"key": "X-tenant",
+								"value": "{{customer_id}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/woocommerce/sync",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"woocommerce",
+								"sync"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tokens",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Tenant",
+								"value": "{{customer_id}}",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"VASP 1\",\n  \"platform\": \"VASP\",\n  \"url\": \"https://vaspapirest-qua.vaspexpresso.pt/\",\n  \"token\": {\n    \"password\": \"12qwaszx,.\",\n    \"username\": \"tpalrilha@crazy4pets.pt\"\n  },\n  \"status\": true,\n  \"type\": 3,\n  \"integration_id\": \"6\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/token/create",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"token",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-tenant",
+								"value": "{{customer_id}}",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/token/7",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"token",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "X-tenant",
+								"value": "{{customer_id}}",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Magento 1\",\n  \"platform\": \"Magento1\",\n  \"token\": \"intp12i525ip591'75'917\",\n  \"type\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/token/3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"token",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getALL",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-tenant",
+								"value": "{{customer_id}}",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/token/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"token",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-tenant",
+								"value": "{{customer_id}}",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/token/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"token",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Configuration",
+			"item": [
+				{
+					"name": "Role",
+					"item": [
+						{
+							"name": "update",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Tenant",
+										"value": "{{customer_id}}",
+										"type": "default"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "last_name",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "phone_number",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "profile_image",
+											"value": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/configuration/role/update/?userId",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"configuration",
+										"role",
+										"update",
+										""
+									],
+									"query": [
+										{
+											"key": "userId",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Tenant",
+										"value": "{{customer_id}}",
+										"type": "default"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/configuration/role/show",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"configuration",
+										"role",
+										"show"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "listAll",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Tenant",
+										"value": "{{customer_id}}",
+										"type": "default"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/configuration/role/roles",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"configuration",
+										"role",
+										"roles"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Tenant",
+										"value": "{{customer_id}}",
+										"type": "default"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "last_name",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "phone_number",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "profile_image",
+											"value": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/configuration/role/create/?userId",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"configuration",
+										"role",
+										"create",
+										""
+									],
+									"query": [
+										{
+											"key": "userId",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Tenant",
+										"value": "{{customer_id}}",
+										"type": "default"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "id",
+											"value": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/configuration/role/delete/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"configuration",
+										"role",
+										"delete",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "listAll",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Tenant",
+										"value": "{{customer_id}}",
+										"type": "default"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/configuration/user/users",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"configuration",
+										"user",
+										"users"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Permission",
+					"item": [
+						{
+							"name": "permissions",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Tenant",
+										"value": "{{customer_id}}",
+										"type": "default"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/configuration/permissions",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"configuration",
+										"permissions"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Profile",
+					"item": [
+						{
+							"name": "update",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Tenant",
+										"value": "{{customer_id}}",
+										"type": "default"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "last_name",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "phone_number",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "profile_image",
+											"value": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/configuration/profile/update/?userId",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"configuration",
+										"profile",
+										"update",
+										""
+									],
+									"query": [
+										{
+											"key": "userId",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "index",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Tenant",
+										"value": "{{customer_id}}",
+										"type": "default"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/configuration/profile/?userId",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"configuration",
+										"profile",
+										""
+									],
+									"query": [
+										{
+											"key": "userId",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Account",
+					"item": [
+						{
+							"name": "update",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Tenant",
+										"value": "{{customer_id}}",
+										"type": "default"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "website",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "business_area",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "logo_image_url",
+											"value": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/configuration/account/update/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"configuration",
+										"account",
+										"update",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "index",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Tenant",
+										"value": "{{customer_id}}",
+										"type": "default"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/configuration/profile/?userId",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"configuration",
+										"profile",
+										""
+									],
+									"query": [
+										{
+											"key": "userId",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "teste",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "default"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "default"
+						},
+						{
+							"key": "username",
+							"value": "tpalrilha@crazy4pets.pt",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "12qwaszx,.",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://vaspapirest-qua.vaspexpresso.pt/token",
+					"protocol": "https",
+					"host": [
+						"vaspapirest-qua",
+						"vaspexpresso",
+						"pt"
+					],
+					"path": [
+						"token"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "customer_id",
+			"value": "",
+			"type": "default"
+		}
+	]
+}

@@ -1,0 +1,38 @@
+# Here you can define shortcuts and aliases to common tasks (commands)
+# you will run in your local environment or CI or deploy.
+#  Use the scripts defined below with:
+#    $ kool run <script>
+# Learn more at: https://kool.dev/docs/getting-started/how-it-works#koolyml
+scripts:
+  composer: kool exec app composer
+  artisan: kool exec app php artisan
+  phpunit: kool exec app php ./vendor/bin/phpunit
+  setup:
+    - kool run before-start
+    - kool start
+    - kool run composer install
+    - kool run artisan key:generate
+  reset:
+    - kool run composer install
+    - kool run artisan migrate:fresh --seed
+    - kool run npm install
+  before-start:
+    - cp .env.example .env
+    - kool run npm install
+  # CLI access to PostgreSQL
+  psql: kool exec -e PGPASSWORD=$DB_PASSWORD database psql -U $DB_USERNAME $DB_DATABASE
+  # npm - helpers for JS handling
+  npm: kool docker kooldev/node:20 npm
+  npx: kool docker kooldev/node:20 npx
+
+  # QA Tools
+  phpqa: kool docker ghcr.io/edgedesigncz/phpqa:v1.26.2-php8.1
+  phpcpd: kool run phpqa phpcpd --fuzzy app
+  phan: kool run phpqa phan --color -p -l app -iy 5
+  phpmd: kool run phpqa phpmd app text phpmd/codesize.xml,phpmd/controversial.xml,phpmd/design.xml,phpmd/naming.xml,phpmd/unusedcode.xml,phpmd/cleancode.xml
+  phpmnd: kool run phpqa phpmnd app --ignore-funcs=round,sleep,abort,str_pad,number_format --exclude=tests --exclude-file=Kernel.php --progress --extensions=default_parameter,-return,argument
+  security-checker: kool run phpqa security-checker security:check composer.lock
+  phpcbf:
+    - kool run phpqa phpcbf app/ tests/ config/ database/
+  pint: kool exec app ./vendor/bin/pint --preset=psr12
+  pint-check: kool run pint -v --test --preset=psr12

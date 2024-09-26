@@ -1,0 +1,49 @@
+image: lorisleiva/laravel-docker:latest
+
+stages:
+ - deploy_prod
+ - build
+ - test
+
+composer:
+ stage: build
+ cache:
+    key: ${CI_COMMIT_REF_SLUG}-composer
+    paths:
+      - vendor/
+ script:
+    - composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
+    - cp .env.example .env
+    - php artisan key:generate
+ artifacts:
+    expire_in: 1 month
+    paths:
+      - vendor/
+      - .env
+ rules:
+  - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop"'
+
+codestyle:
+ stage: test
+ dependencies: []
+ script:
+   - composer require --dev laravel/pint
+   - vendor/bin/pint -v --test --preset=psr12 --config=pint.json
+ rules:
+  - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "develop"'
+
+deploy_prod:
+ image: ubuntu:latest
+ stage: deploy_prod
+ environment: production
+ before_script:
+    - apt-get update && apt-get install -y sshpass
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan $VM_IPADDRESS >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+
+ script:
+    - sshpass -p $SSH_PASSWORD ssh -o StrictHostKeyChecking=no $SSH_USER@$VM_IPADDRESS 'cd /var/www/api.orderflow.pt && ./deploy.sh'
+ only:
+    - main

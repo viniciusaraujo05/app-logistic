@@ -1,0 +1,80 @@
+version: 2.1
+
+executors:
+  php-executor:
+    docker:
+      - image: lorisleiva/laravel-docker:latest
+
+jobs:
+  composer-install:
+    executor: php-executor
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - composer-{{ .Branch }}-{{ checksum "composer.json" }}
+            - composer-{{ .Branch }}
+            - composer
+      - run:
+          name: Install Composer dependencies
+          command: |
+            composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
+      - run:
+          name: Copy .env.example to .env
+          command: cp .env.example .env
+      - run:
+          name: Generate application key
+          command: php artisan key:generate
+      - save_cache:
+          paths:
+            - vendor/
+            - .env
+          key: composer-{{ .Branch }}-{{ checksum "composer.json" }}
+      - persist_to_workspace:
+          root: .
+          paths:
+            - vendor
+            - .env
+
+  codestyle:
+    executor: php-executor
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /workspace
+      - run:
+          name: Install Laravel Pint
+          command: composer require --dev laravel/pint
+      - run:
+          name: Run Laravel Pint
+          command: vendor/bin/pint --preset=psr12 --config=pint.json
+
+  deploy-prod:
+    executor: php-executor
+    steps:
+      - run:
+          name: Deploy to Production
+          command: |
+            curl -X POST -H "Content-Type: application/json" "http://webhook.orderflow.pt/webhook/back/deploy-prod.php"
+
+workflows:
+  version: 2
+  deploy_workflow:
+    jobs:
+      - composer-install:
+          filters:
+            branches:
+              only:
+                - develop
+      - codestyle:
+          requires:
+            - composer-install
+          filters:
+            branches:
+              only:
+                - develop
+      - deploy-prod:
+          filters:
+            branches:
+              only:
+                - main
